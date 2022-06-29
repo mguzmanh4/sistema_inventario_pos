@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['categories'])->get();
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -25,7 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('name', 'id');
+
+        return view('products.create',compact('categories'));
     }
 
     /**
@@ -36,7 +41,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // dd($request);
+        $product = Product::create($request->validated());
+        $product->categories()->sync($request->input('categories', []));
+
+        return redirect()->route('products.index')->with('success', 'Product Created!!');
+
     }
 
     /**
@@ -58,7 +68,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::pluck('name', 'id');
+
+        return view('products.edit',compact('product','categories'));
     }
 
     /**
@@ -70,7 +82,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+        $product->categories()->sync($request->input('categories', []));
+
+        return redirect()->route('products.index')->with('success', 'Product Updated!!');
+
     }
 
     /**
@@ -81,6 +97,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Product Deleted!!');
     }
 }
