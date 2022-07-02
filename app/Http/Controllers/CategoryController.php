@@ -42,7 +42,7 @@ class CategoryController extends Controller
     {
         $category = Category::create($request->validated());
         // dd($category);
-        return redirect()->route('categories.index')->with('success', 'Category Updated!!');
+        return redirect()->route('categories.index')->with('success', 'Category Created!!');
 
     }
 

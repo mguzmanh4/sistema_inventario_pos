@@ -8,11 +8,11 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
         </div>
 
         <div class="card-header py-3">
-            <a href="{{ route('products.create') }}" class="btn btn-info">
+            <a href="{{ route('orders.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i> Add New
             </a>
         </div>
@@ -21,43 +21,48 @@
         <div class="card-body">
 
 
-            <table id="product-table" class="table" style="width:100%">
+            <table id="order-table" class="table" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Sku</th>
-                        <th>Price</th>
-                        <th>Categories</th>
+                        <th>User</th>
+                        <th>Products</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($orders as $order)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
-                            <td>{{ $product->sku }}</td>
-
-                            <td>{{ $product->price }}</td>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user->name }}</td>
                             <td>
-                                @foreach($product->categories as $key => $item)
+                                @foreach($order->products as $key => $item)
                                     <span class="badge badge-primary">{{ $item->name }}</span>
                                 @endforeach
                             </td>
 
                             <td>
-                                <form action="{{ route('products.destroy', $product->id ) }}" method="post">
-                                    <a href="/products/{{ $product->id }}/edit" class="btn btn-info">
+                                <form action="{{ route('orders.destroy', $order->id ) }}" method="post">
+                                    <a href="/orders/{{ $order->id }}/edit" class="btn btn-info">
                                         <i class="fas fa-pen"></i>
                                     </a>
+
+                                    <a href="/orders/{{ $order->id }}" class="btn btn-success">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fas fa-trash"></i>
                                     </button>
+
+
+
+
+                                    {{--  <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-eye"></i>
+                                    </button>  --}}
                                 </form>
                             </td>
                         </tr>
@@ -76,7 +81,7 @@
     <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#product-table').DataTable({
+            $('#order-table').DataTable({
                 order: [[0, 'desc']],
             });
         });

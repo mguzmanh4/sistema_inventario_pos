@@ -13,7 +13,8 @@
         </div>
         <div class="card-body">
 
-            <form method="POST" action="{{ route('products.store') }}">
+            <form method="POST" action="{{ route('products.update',[$product->id]) }}">
+                @method('PUT')
                 @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Name</label>
@@ -24,9 +25,15 @@
                     <textarea class="form-control" id="description" name="description" id="exampleFormControlTextarea1" required
                         rows="3">{{ $product->description }}</textarea>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleFormControlTextarea1">Sku</label>
+                        <input type="text" class="form-control" id="sku" name="sku" value="{{ $product->sku }}" required>
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Category</label>

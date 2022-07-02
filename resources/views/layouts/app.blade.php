@@ -112,7 +112,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -138,13 +138,43 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="{{ Route::is('roles.*')   ? 'nav-item active' : 'nav-item' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRoles"
+                    aria-expanded="true" aria-controls="collapseRoles">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Roles</span>
+                </a>
+                <div id="collapseRoles" class="{{ Route::is('roles.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="{{ Route::is('roles.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.index') }}">List</a>
+                        <a class="{{ Route::is('roles.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.create') }}">Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="{{ Route::is('users.*')   ? 'nav-item active' : 'nav-item' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <div id="collapseUsers" class="{{ Route::is('users.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="{{ Route::is('users.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.index') }}">List</a>
+                        <a class="{{ Route::is('users.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.create') }}">Create</a>
+                    </div>
+                </div>
+            </li>
+
+
             <li class="{{ Route::is('categories.*')   ? 'nav-item active' : 'nav-item' }}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                    aria-expanded="true" aria-controls="collapseCategories">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Categories</span>
                 </a>
-                <div id="collapseTwo" class="{{ Route::is('categories.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseCategories" class="{{ Route::is('categories.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="{{ Route::is('categories.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.index') }}">List</a>
                         <a class="{{ Route::is('categories.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.create') }}">Create</a>
@@ -153,12 +183,12 @@
             </li>
 
             <li class="{{ Route::is('products.*')   ? 'nav-item active' : 'nav-item' }}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+                    aria-expanded="true" aria-controls="collapseProducts">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Products</span>
                 </a>
-                <div id="collapseTwo" class="{{ Route::is('products.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProducts" class="{{ Route::is('products.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="{{ Route::is('products.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.index') }}">List</a>
                         <a class="{{ Route::is('products.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.create') }}">Create</a>
@@ -168,19 +198,18 @@
 
 
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+            <!-- Nav Item - Orders Collapse Menu -->
+            <li class="{{ Route::is('orders.*')   ? 'nav-item active' : 'nav-item' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
+                    aria-expanded="true" aria-controls="collapseOrders">
+                    <i class="fas fa-fw fa-cart-plus"></i>
+                    <span>Orders</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="{{ Route::is('orders.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.index') }}">List</a>
+                        <a class="{{ Route::is('orders.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.create') }}">Create</a>
                     </div>
                 </div>
             </li>
@@ -229,6 +258,11 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Info Empresa
+                                </a>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -260,7 +294,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Your Website 2022</span>
                     </div>
                 </div>
             </footer>
@@ -312,7 +346,7 @@
     @endauth
 
     @guest
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

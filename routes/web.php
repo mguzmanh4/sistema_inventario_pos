@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +29,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('categories', CategoryController::class);
 Route::resource('products', ProductController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('roles', RoleController::class);
+Route::resource('users', UserController::class);
+
+Route::get('donwload-pdf/{order_id}',  [App\Http\Controllers\ReceiptController::class, 'donwloadPdf']);
+
+

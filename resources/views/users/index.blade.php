@@ -8,11 +8,11 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
         </div>
 
         <div class="card-header py-3">
-            <a href="{{ route('products.create') }}" class="btn btn-info">
+            <a href="{{ route('users.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i> Add New
             </a>
         </div>
@@ -21,36 +21,40 @@
         <div class="card-body">
 
 
-            <table id="product-table" class="table" style="width:100%">
+            <table id="user-table" class="table" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th>Sku</th>
-                        <th>Price</th>
-                        <th>Categories</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Dni</th>
+                        <th>Email</th>
+                        <th>Role</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($users as $user)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
-                            <td>{{ $product->sku }}</td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->first_name }}</td>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->dni }}</td>
+                            <td>{{ $user->email }}</td>
 
-                            <td>{{ $product->price }}</td>
                             <td>
-                                @foreach($product->categories as $key => $item)
+                                @foreach($user->roles as $key => $item)
                                     <span class="badge badge-primary">{{ $item->name }}</span>
                                 @endforeach
                             </td>
 
                             <td>
-                                <form action="{{ route('products.destroy', $product->id ) }}" method="post">
-                                    <a href="/products/{{ $product->id }}/edit" class="btn btn-info">
+                                <form action="{{ route('users.destroy', $user->id ) }}" method="post">
+                                    <a href="/users/{{ $user->id }}/edit" class="btn btn-info">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     @csrf
@@ -76,7 +80,7 @@
     <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#product-table').DataTable({
+            $('#user-table').DataTable({
                 order: [[0, 'desc']],
             });
         });

@@ -32,6 +32,7 @@ class StoreProductRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'sku'=> 'required',
             'price' => [
                 'required'
             ],

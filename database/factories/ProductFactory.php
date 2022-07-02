@@ -16,6 +16,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'sku' => strtoupper($this->faker->bothify('????-####')), // 'Hello 42jz',
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 2, $max = 1000) // 48.8932
         ];
     }
