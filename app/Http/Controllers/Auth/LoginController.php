@@ -35,6 +35,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // dd("aaa");
         $this->middleware('guest')->except('logout');
+        $this->middleware('verify.password');
+
     }
 }

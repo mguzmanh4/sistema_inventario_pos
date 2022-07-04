@@ -92,6 +92,8 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->back()->with('success', 'Category Deleted!!');
+        // return redirect()->back()->with('success', 'Category Deleted!!');
+        return response()->json(['message' => 'Record deleted'], 200);
+
     }
 }

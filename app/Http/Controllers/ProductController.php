@@ -99,6 +99,8 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->back()->with('success', 'Product Deleted!!');
+        // return redirect()->back()->with('success', 'Product Deleted!!');
+        return response()->json(['message' => 'Record deleted'], 200);
+
     }
 }

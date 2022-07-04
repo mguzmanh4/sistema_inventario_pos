@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::count();
+        $roles = Role::count();
+        $orders = Order::count();
+        $products = Product::count();
+        $categories = Category::count();
+
+
+        return view('home',compact('users','roles','orders','products','categories'));
     }
 }

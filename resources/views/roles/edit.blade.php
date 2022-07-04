@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
 
-            <form method="POST" action="{{ route('roles.update',[$role->id]) }}">
+            <form method="POST" action="{{ route('roles.update',[$role->id]) }}" id="form">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
@@ -25,4 +25,10 @@
         </div>
     </div>
 @endsection
-
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#form").validate({});
+        });
+    </script>
+@endsection

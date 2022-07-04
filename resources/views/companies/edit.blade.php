@@ -13,53 +13,46 @@
         </div>
         <div class="card-body">
 
-            <form method="POST" action="{{ route('users.store') }}" id="form">
+            <form method="POST" action="{{ route('users.update',[$user->id]) }}">
+                @method('PUT')
                 @csrf
                 <div class="row">
                     <div class="col">
                         <label for="exampleFormControlTextarea1">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
                     </div>
                     <div class="col">
                         <label for="exampleFormControlInput1">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        <input type="text" class="form-control" id="first_name" name="first_name"value="{{ $user->first_name }}" required>
                     </div>
                     <div class="col">
                         <label for="exampleFormControlInput1">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        <input type="text" class="form-control" id="last_name" name="last_name"value="{{ $user->last_name }}" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label for="exampleFormControlTextarea1">User Name</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" required>
                     </div>
                     <div class="col">
                         <label for="exampleFormControlInput1">Dni</label>
-                        <input type="number" class="form-control" id="dni" name="dni" required>
+                        <input type="number" class="form-control" id="dni" name="dni" value="{{ $user->dni }}" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label for="exampleFormControlTextarea1">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
                     </div>
                 </div>
-
-
-
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Role</label>
                     <select class="form-control" name="roles[]" id="roles">
-                        @foreach ($roles as $id => $role)
-                            <option value="{{ $id }}"
-                                {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                        @foreach($roles as $id => $role)
+                            <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $role }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -78,11 +71,4 @@
 
         });
     </script>
-
-    <script>
-        $(document).ready(function() {
-            $("#form").validate({});
-        });
-    </script>
-
 @endsection

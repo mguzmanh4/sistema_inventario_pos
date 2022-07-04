@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,8 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with(['roles'])
-                    ->where('id', '!=',Auth::user()->id)
-                    ->get();
+            ->where('id', '!=', Auth::user()->id)
+            ->get();
 
         return view('users.index', compact('users'));
     }
@@ -34,7 +35,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'id');
 
-        return view('users.create',compact('roles'));
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -50,7 +51,6 @@ class UserController extends Controller
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index')->with('success', 'User Created!!');
-
     }
 
     /**
@@ -59,9 +59,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        if (Auth::user()->id === $user->id) {
+            $user = User::where('id', $user->id)
+                ->first();
+            return view('users.view', compact('user'));
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -74,7 +80,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'id');
 
-        return view('users.edit',compact('user','roles'));
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -90,7 +96,15 @@ class UserController extends Controller
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index')->with('success', 'User Updated!!');
+    }
 
+    public function updateUserWithOutRoles(Request $request, User $user)
+    {
+        // dd($user);
+        $user->update($request->all());
+        // $user->roles()->sync($request->input('roles', []));
+
+        return redirect()->route('users.index')->with('success', 'User Updated!!');
     }
 
     /**
@@ -103,6 +117,21 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->back()->with('success', 'User Deleted!!');
+        // return redirect()->back()->with('success', 'User Deleted!!');
+        return response()->json(['message' => 'Record deleted'], 200);
+
     }
+    public function changePasswordDefaultStore(Request $request)
+    {
+        $user = Auth::user();
+        $user->is_password_default = null;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+
+        return redirect('home');
+    }
+
+
+
 }

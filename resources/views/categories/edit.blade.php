@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
 
-            <form method="POST" action="{{ route("categories.update", [$category->id]) }}" >
+            <form method="POST" action="{{ route("categories.update", [$category->id]) }}" id="form" >
                 @method('PUT')
                 @csrf
                 <div class="form-group">
@@ -27,4 +27,25 @@
             </form>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#form").validate({
+
+                rules: {
+
+                    name: {
+                        required: true,
+                        maxlength: 250
+                    },
+                    description: {
+                        required: true,
+                        maxlength: 250
+                    }
+                }
+
+            });
+        });
+    </script>
 @endsection

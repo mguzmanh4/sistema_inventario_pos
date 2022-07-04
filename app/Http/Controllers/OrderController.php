@@ -121,6 +121,8 @@ class OrderController extends Controller
     {
         $order->delete();
 
-        return redirect()->back()->with('success', 'Order Deleted!!');
+        // return redirect()->back()->with('success', 'Order Deleted!!');
+        return response()->json(['message' => 'Record deleted'], 200);
+
     }
 }

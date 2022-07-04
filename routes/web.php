@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReceiptController;
@@ -19,20 +20,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return redirect('/login');
+// });
+
+// Auth::routes();
+
+Auth::routes(['register' => false]);
+
 Route::get('/', function () {
+    // dd("heree");
     return redirect('/login');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('categories', CategoryController::class);
-Route::resource('products', ProductController::class);
-Route::resource('orders', OrderController::class);
-Route::resource('roles', RoleController::class);
-Route::resource('users', UserController::class);
+Route::middleware(['auth',])->group(function () {
 
-Route::get('donwload-pdf/{order_id}',  [App\Http\Controllers\ReceiptController::class, 'donwloadPdf']);
+// Route::group(['middleware' => ['auth', 'verify.password'], 'namespace' => 'App\Http\Controllers'], function(){
+
+    Route::get('dashboard',  [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('orders', OrderController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('companies', CompanyController::class);
+
+    Route::post('update-user/{user}',  [App\Http\Controllers\UserController::class, 'updateUserWithOutRoles'])->name('updateUserWithOutRoles');
+
+
+    Route::get('donwload-pdf/{order_id}',  [App\Http\Controllers\ReceiptController::class, 'donwloadPdf']);
+
+
+});
+
+Route::view('/change-password-default', 'users.change_password_default')->name('change-password-default');
+Route::post('/change-password-default', [UserController::class, 'changePasswordDefaultStore'])->name('change-password-default.store');
+
+
 
 

@@ -40,6 +40,9 @@
     <link href="{{ asset('css/datatables/datatables.min.css') }}" rel="stylesheet">
 
     @yield('styles')
+    <!-- Sweetalert2-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -254,13 +257,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('users.update',[Auth::user()->id]) }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('companies.create') }}">
                                     <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Info Empresa
+                                    Company Info
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -431,6 +434,9 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/template/sb-admin-2.min.js') }}"></script>
 
+
+    <!-- Validate -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
     @yield('scripts')
 </body>
