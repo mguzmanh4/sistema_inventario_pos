@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +45,15 @@ Route::middleware(['auth',])->group(function () {
     Route::get('dashboard',  [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('categories', CategoryController::class);
+    Route::resource('shoppings', ShoppingController::class);
+    Route::get('export-shoppings', [App\Http\Controllers\ShoppingController::class, 'export'])->name('export.shoppings');
+
     Route::resource('products', ProductController::class);
+    Route::get('export-products', [App\Http\Controllers\ProductController::class, 'export'])->name('export.products');
+
     Route::resource('orders', OrderController::class);
+    Route::get('export-orders', [App\Http\Controllers\OrderController::class, 'export'])->name('export.orders');
+
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('companies', CompanyController::class);

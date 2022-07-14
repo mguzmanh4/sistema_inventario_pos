@@ -16,27 +16,18 @@
 
             <form method="POST" action="{{ route('products.store') }}" id="form">
                 @csrf
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" id="description" name="description" id="exampleFormControlTextarea1" required
-                        rows="3"></textarea>
-                </div>
                 <div class="row">
                     <div class="col">
                         <label for="exampleFormControlTextarea1">Sku</label>
-                        <input type="text" class="form-control" id="sku" name="sku" required>
+                        <input type="text"  readonly class="form-control" id="sku" name="sku" value="{{ $product->sku + 1 }}" required>
                     </div>
                     <div class="col">
-                        <label for="exampleFormControlInput1">Price</label>
-                        <input type="number" class="form-control" id="price" name="price" required>
+                        <label for="exampleFormControlInput1">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Category</label>
+                    <label for="exampleFormControlInput1">Categories</label>
                     <select class="form-control" name="categories[]" id="categories" multiple>
                         @foreach ($categories as $id => $category)
                             <option value="{{ $id }}"
@@ -44,6 +35,37 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control" id="description" name="description" id="exampleFormControlTextarea1" required
+                        rows="3"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleFormControlTextarea1">Purchase Price per Uni</label>
+                        <input type="text" class="form-control" id="purchase_price" name="purchase_price" required>
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlInput1">Selling Price per Unit</label>
+                        <input type="text" class="form-control" id="selling_price" name="selling_price" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="exampleFormControlTextarea1">Utility</label>
+                        <input type="text" class="form-control" readonly id="utility" name="utility" required>
+                    </div>
+
+                    <div class="col">
+                        <label for="exampleFormControlTextarea1">Stock</label>
+                        <input type="number" class="form-control" id="stock" name="stock" required>
+                    </div>
+                </div>
+
+                <br>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
             </form>
         </div>
@@ -65,6 +87,42 @@
     <script>
         $(document).ready(function() {
             $("#form").validate({});
+        });
+    </script>
+
+    <script>
+        let purchase_price = document.getElementById('purchase_price');
+        let selling_price = document.getElementById('selling_price');
+
+        window.addEventListener('load', async() => {
+            if (purchase_price) {
+
+                purchase_price.addEventListener('keyup', (event) => {
+                    //console.log("2222")
+
+                    let selling_priceElm = document.getElementById('selling_price').value;
+                    if (selling_priceElm) {
+                        let valueSelling = Number.parseFloat(selling_priceElm.replace(/,/g, ''));
+                        let purchase_price = Number.parseFloat(event.target.value.replace(/,/g, ''));
+                        document.getElementById('utility').value = ((valueSelling  - purchase_price)).toFixed(2);
+                    }
+                })
+            }
+
+            if (selling_price) {
+                selling_price.addEventListener('keyup', (event) => {
+                    // console.log(event.target.value);
+                    let purchase_price = document.getElementById('purchase_price').value;
+                    if (purchase_price) {
+                        let valueSelling = Number.parseFloat(event.target.value.replace(/,/g, ''));
+                        purchase_price = Number.parseFloat(purchase_price.replace(/,/g, ''));
+                        document.getElementById('utility').value = ((valueSelling - purchase_price)).toFixed(2);
+                    }
+                });
+            }
+
+
+
         });
     </script>
 

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-{{-- @section('styles')
+@section('styles')
     <!-- Datatables-->
-    <link href="{{ asset('css/datatables/datatables.min.css') }}" rel="stylesheet">
-@endsection --}}
+@endsection
 
 @section('content')
     <div class="card shadow mb-4">
@@ -15,7 +14,12 @@
             <a href="{{ route('orders.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i> Add New
             </a>
+            <a href="{{ route('export.orders') }}" class="btn btn-primary">
+                <i class="fas fa-file-excel"></i> Export
+             </a>
+
         </div>
+
 
 
         <div class="card-body">
@@ -36,7 +40,9 @@
                     <tr>
                         <th>Id</th>
                         <th>User</th>
+                        <th>Client Name</th>
                         <th>Products</th>
+                        <th>Total</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -45,11 +51,20 @@
                         <tr>
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->user->name }}</td>
+                            <td>{{ $order->client_name }}</td>
+
                             <td>
+                                @php
+                                    $suma = 0 ;
+                                @endphp
                                 @foreach ($order->products as $key => $item)
                                     <span class="badge badge-primary">{{ $item->name }}</span>
+                                    @php
+                                        $suma += $item->purchase_price;
+                                    @endphp
                                 @endforeach
                             </td>
+                            <td>S/ {{$suma }}</td>
 
                             <td>
                                 <a href="/orders/{{ $order->id }}/edit" class="btn btn-info">
@@ -79,7 +94,10 @@
 @section('scripts')
     <!-- Datatables-->
     <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
+
+
     <script>
+
         $(document).ready(function() {
             $('#order-table').DataTable({
                 order: [
@@ -87,6 +105,8 @@
                 ],
             });
         });
+
+
     </script>
 
     <script>

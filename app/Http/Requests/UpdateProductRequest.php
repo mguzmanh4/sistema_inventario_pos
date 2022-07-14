@@ -33,7 +33,16 @@ class UpdateProductRequest extends FormRequest
                 'required',
             ],
             'sku'=> 'required',
-            'price' => [
+            'purchase_price' => [
+                'required'
+            ],
+            'selling_price' => [
+                'required'
+            ],
+            'utility' => [
+                'required'
+            ],
+            'stock' => [
                 'required'
             ],
             'categories.*' => [

@@ -10,7 +10,7 @@ class Order extends Model
 {
     use HasFactory , SoftDeletes;
 
-    protected $fillable = ['order_date','user_id'];
+    protected $fillable = ['order_date','user_id','client_name'];
 
     public function user()
     {

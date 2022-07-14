@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductsExport;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
-
+use Excel;
 class ProductController extends Controller
 {
     /**
@@ -29,8 +30,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::pluck('name', 'id');
-
-        return view('products.create',compact('categories'));
+        $product = Product::select('sku')->take(1)->orderBy('sku','desc')->first();
+        // dd($product);
+        return view('products.create',compact('categories','product'));
     }
 
     /**
@@ -57,7 +59,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // $product = User::find($id);
+
+        return response()->json($product);
     }
 
     /**
@@ -103,4 +107,10 @@ class ProductController extends Controller
         return response()->json(['message' => 'Record deleted'], 200);
 
     }
+
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'prodcuts.xlsx');
+    }
+
 }

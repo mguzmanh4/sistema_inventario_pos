@@ -15,6 +15,12 @@
             <a href="{{ route('products.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i> Add New
             </a>
+
+            <a href="{{ route('export.products') }}" class="btn btn-primary">
+                <i class="fas fa-file-excel"></i> Export
+             </a>
+
+
         </div>
 
 
@@ -35,11 +41,13 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
                         <th>Sku</th>
-                        <th>Price</th>
+                        <th>Name</th>
                         <th>Categories</th>
+                        <th>Purchase Price per Uni</th>
+                        <th>Selling Price per Unit</th>
+                        <th>Utility</th>
+                        <th>Stock</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -47,17 +55,17 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
                             <td>{{ $product->sku }}</td>
-
-                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->name }}</td>
                             <td>
                                 @foreach($product->categories as $key => $item)
                                     <span class="badge badge-primary">{{ $item->name }}</span>
                                 @endforeach
                             </td>
-
+                            <td>{{ $product->purchase_price }}</td>
+                            <td>{{ $product->selling_price }}</td>
+                            <td>{{ $product->utility }}</td>
+                            <td>{{ $product->stock }}</td>
                             <td>
                                 <a href="/products/{{ $product->id }}/edit" class="btn btn-info">
                                     <i class="fas fa-pen"></i>

@@ -185,6 +185,22 @@
                 </div>
             </li>
 
+
+            <li class="{{ Route::is('shoppings.*')   ? 'nav-item active' : 'nav-item' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseshoppings"
+                    aria-expanded="true" aria-controls="collapseshoppings">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>shoppings</span>
+                </a>
+                <div id="collapseshoppings" class="{{ Route::is('shoppings.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="{{ Route::is('shoppings.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.index') }}">List</a>
+                        <a class="{{ Route::is('shoppings.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.create') }}">Create</a>
+                    </div>
+                </div>
+            </li>
+
+
             <li class="{{ Route::is('products.*')   ? 'nav-item active' : 'nav-item' }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
                     aria-expanded="true" aria-controls="collapseProducts">

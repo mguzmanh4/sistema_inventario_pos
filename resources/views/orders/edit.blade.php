@@ -21,10 +21,14 @@
                     <input type="text" class="form-control" readonly id="name" name="name" value="{{ $order->user->name }}" required>
                 </div>
                 <div class="form-group">
+                    <label for="exampleFormControlInput1">Client Name</label>
+                    <input type="text" class="form-control" readonly id="client_name" name="client_name" value="{{ $order->client_name }}" required>
+                </div>
+                <div class="form-group">
                     <label for="exampleFormControlInput1">Products</label>
                     <select class="form-control" name="products[]" id="products" multiple>
                         @foreach($products as  $product)
-                            <option value="{{ $product->id }}" {{ (in_array($product->id, old('products', [])) || $order->products->contains($product->id)) ? 'selected' : '' }}>{{ $product->name }} - {{ $product->price }}</option>
+                            <option value="{{ $product->id }}" {{ (in_array($product->id, old('products', [])) || $order->products->contains($product->id)) ? 'selected' : '' }}>{{ $product->name }} - {{ $product->purchase_price }}</option>
                         @endforeach
                     </select>
                 </div>

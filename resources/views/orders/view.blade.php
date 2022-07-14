@@ -19,6 +19,10 @@
                     <input readonly type="text" class="form-control" id="name" name="name" value="{{ $order->user->name }}">
                 </div>
                 <div class="form-group">
+                    <label for="exampleFormControlInput1">Client Name</label>
+                    <input type="text" class="form-control" readonly id="client_name" name="client_name" value="{{ $order->client_name }}" required>
+                </div>
+                <div class="form-group">
                     <table id="order-table" class="table" style="width:100%">
                         <thead>
                             <tr align="center">
@@ -35,10 +39,10 @@
                                 <tr align="center">
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->sku }}</td>
-                                    <td>S/ {{ $product->price }}</td>
+                                    <td>S/ {{ $product->purchase_price }}</td>
                                 </tr>
                                 @php
-                                    $suma += $product->price;
+                                    $suma += $product->purchase_price;
                                 @endphp
                             @endforeach
                                 <tr>

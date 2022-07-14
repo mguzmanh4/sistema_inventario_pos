@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OrdersExport;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Company;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Excel;
 class OrderController extends Controller
 {
     /**
@@ -48,6 +50,7 @@ class OrderController extends Controller
 
         $order = new Order;
         $order->user_id = Auth::user()->id;
+        $order->client_name = $request->client_name;
         $order->save();
         $order->products()->sync($request->input('products', []));
 
@@ -104,6 +107,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($order->id);
         $order->user_id = Auth::user()->id;
+        $order->client_name = $request->client_name;
         $order->save();
 
         $order->products()->sync($request->input('products', []));
@@ -124,5 +128,9 @@ class OrderController extends Controller
         // return redirect()->back()->with('success', 'Order Deleted!!');
         return response()->json(['message' => 'Record deleted'], 200);
 
+    }
+    public function export()
+    {
+        return Excel::download(new OrdersExport, 'orders.xlsx');
     }
 }

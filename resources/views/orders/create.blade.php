@@ -19,12 +19,21 @@
                     <label for="exampleFormControlInput1">Select Products</label>
                     <select class="form-control" name="products[]" id="products" multiple>
                         @foreach ($products as $product)
-                            <option value="{{ $product->id }}" {{ in_array($product->id, old('products', [])) ? 'selected' : '' }}> {{ $product->name }} - {{ $product->price }}</option>
+                            <option value="{{ $product->id }}" {{ in_array($product->id, old('products', [])) ? 'selected' : '' }}> {{ $product->name }} - {{ $product->purchase_price }}</option>
                         @endforeach
                     </select>
 
 
                 </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="exampleFormControlTextarea1">Client Name</label>
+                        <input type="text" class="form-control" id="client_name" name="client_name" required>
+                    </div>
+
+                </div>
+                <br>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Create Order</button>
             </form>
         </div>
