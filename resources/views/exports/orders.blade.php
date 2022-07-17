@@ -2,11 +2,12 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>User</th>
-            <th>Client Name</th>
-            <th>Products</th>
-            <th>Total</th>
-            <th>Created At</th>
+            <th>Usuario</th>
+            <th>Nombre de cliente</th>
+            <th>Productos</th>
+            <th>Cantidad</th>
+            {{--  <th>Total</th>  --}}
+            <th>Fecha de creación</th>
         </tr>
     </thead>
     <tbody>
@@ -21,12 +22,21 @@
                     @endphp
                     @foreach ($order->products as $key => $item)
                         <span class="badge badge-primary">{{ $item->name }}  , </span>
+
                         @php
                             $suma += $item->purchase_price;
                         @endphp
                     @endforeach
                 </td>
-                <td>S/ {{$suma }}</td>
+                <td>
+                    @foreach ($order->products as $key => $item)
+                        <span class="badge badge-primary">{{ $item->pivot->amount }}  , </span>
+
+                    @endforeach
+                </td>
+
+                {{--  <td>S/ {{$suma }}</td>  --}}
+                {{--  <td>{{ $order->products }}</td>  --}}
                 <td>{{$order->created_at }}</td>
             </tr>
         @endforeach

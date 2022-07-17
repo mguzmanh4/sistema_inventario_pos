@@ -64,6 +64,11 @@ Route::middleware(['auth',])->group(function () {
     Route::get('donwload-pdf/{order_id}',  [App\Http\Controllers\ReceiptController::class, 'donwloadPdf']);
 
 
+    Route::post('searchUser',  [App\Http\Controllers\ApiReniecController::class, 'searchUser'])->name('reniec.searchUser');
+
+
+
+
 });
 
 Route::view('/change-password-default', 'users.change_password_default')->name('change-password-default');

@@ -40,4 +40,9 @@ class LoginController extends Controller
         // $this->middleware('verify.password');
 
     }
+
+    public function username()
+{
+    return 'username';
+}
 }

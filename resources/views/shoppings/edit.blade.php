@@ -10,7 +10,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Create Shopping</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Editar Compra</h6>
         </div>
         <div class="card-body">
 
@@ -19,11 +19,8 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Product</label>
-                    {{ $shopping->product->id }}
+                    <label for="exampleFormControlInput1">Producto</label>
                     <select class="form-control" name="products[]" id="products">
-
-
                         @foreach($products as $product)
                             <option value="{{ $product->id }}" {{ ($shopping->product->id ===  $product->id) ? 'selected' : '' }}>{{ $product->name }}</option>
                         @endforeach
@@ -42,7 +39,7 @@
                         <input type="number"readonly class="form-control" id="stock" name="stock"  value="{{ $shopping->product->stock}}" required>
                     </div>
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Purchased Amount</label>
+                        <label for="exampleFormControlTextarea1">Cantidad Comprada</label>
                         <input type="number" class="form-control" id="purchased_amount" name="purchased_amount"  value="{{ $shopping->purchased_amount}}" required>
                     </div>
 
@@ -50,18 +47,18 @@
 
                 <div class="row">
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Vendor</label>
+                        <label for="exampleFormControlTextarea1">Vendedor</label>
                         <input type="text" class="form-control" id="vendor" name="vendor"  value="{{ $shopping->vendor}}" required>
                     </div>
 
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Cost</label>
+                        <label for="exampleFormControlTextarea1">Costo</label>
                         <input type="number" class="form-control" id="cost" name="cost"  value="{{ $shopping->cost}}" required>
                     </div>
                 </div>
 
                 <br>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
             </form>
         </div>
     </div>

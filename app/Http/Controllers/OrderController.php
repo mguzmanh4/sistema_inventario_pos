@@ -36,7 +36,9 @@ class OrderController extends Controller
     {
         $products = Product::all();
 
-        return view('orders.create',compact('products'));
+        $order = Order::select('id')->take(1)->orderBy('id','desc')->first();
+
+        return view('orders.create',compact('products','order'));
     }
 
     /**
@@ -47,18 +49,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request['products']);
         $order = new Order;
         $order->user_id = Auth::user()->id;
         $order->client_name = $request->client_name;
         $order->save();
-        $order->products()->sync($request->input('products', []));
+        $order->products()->sync($this->mapProducts($request['products']));
 
         return redirect()->route('orders.index')->with('success', 'Product Created!!');
 
-
-        // dd($request);
     }
+
 
     /**
      * Display the specified resource.
@@ -70,10 +71,10 @@ class OrderController extends Controller
     {
 
         $order = Order::with(['products','user'])
-                        ->where('id' , $order->id)
-                        ->first();
+            ->where('id' , $order->id)
+            ->first();
 
-
+        // dd($order);
 
         return view('orders.view',compact('order'));
     }
@@ -86,14 +87,17 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        $products = Product::all();
+        $order->load('products');
+        $products = Product::get()->map(function($product) use ($order) {
+            $product->value = data_get($order->products->firstWhere('id', $product->id), 'pivot.amount') ?? null;
+            return $product;
+        });
 
-        $order = Order::with(['products','user'])
-                        ->where('id' , $order->id)
-                        ->first();
+        return view('orders.edit', [
+            'products' => $products,
+            'order' => $order,
+        ]);
 
-
-        return view('orders.edit',compact('order','products'));
     }
 
     /**
@@ -110,9 +114,23 @@ class OrderController extends Controller
         $order->client_name = $request->client_name;
         $order->save();
 
-        $order->products()->sync($request->input('products', []));
+        $order->products()->sync($this->mapProducts($request['products']));
+
 
         return redirect()->route('orders.index')->with('success', 'Product Created!!');
+
+
+    }
+
+
+    private function mapProducts($products)
+    {
+
+        return collect($products)->map(function ($i) {
+
+            //update Products
+            return ['amount' => $i];
+        });
     }
 
     /**
@@ -131,6 +149,6 @@ class OrderController extends Controller
     }
     public function export()
     {
-        return Excel::download(new OrdersExport, 'orders.xlsx');
+        return Excel::download(new OrdersExport, 'ordenes.xlsx');
     }
 }

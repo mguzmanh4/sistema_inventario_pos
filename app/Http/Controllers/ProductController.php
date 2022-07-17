@@ -110,7 +110,7 @@ class ProductController extends Controller
 
     public function export()
     {
-        return Excel::download(new ProductsExport, 'prodcuts.xlsx');
+        return Excel::download(new ProductsExport, 'productos.xlsx');
     }
 
 }

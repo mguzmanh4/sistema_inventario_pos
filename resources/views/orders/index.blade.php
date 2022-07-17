@@ -7,15 +7,15 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Ordenes</h6>
         </div>
 
         <div class="card-header py-3">
             <a href="{{ route('orders.create') }}" class="btn btn-info">
-                <i class="fas fa-plus"></i> Add New
+                <i class="fas fa-plus"></i> Agregar
             </a>
             <a href="{{ route('export.orders') }}" class="btn btn-primary">
-                <i class="fas fa-file-excel"></i> Export
+                <i class="fas fa-file-excel"></i> Exportar
              </a>
 
         </div>
@@ -39,10 +39,10 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>User</th>
-                        <th>Client Name</th>
-                        <th>Products</th>
-                        <th>Total</th>
+                        <th>Usuario</th>
+                        <th>Nombre del Cliente</th>
+                        <th>Productos</th>
+                        {{--  <th>Total</th>  --}}
                         <th></th>
                     </tr>
                 </thead>
@@ -64,7 +64,7 @@
                                     @endphp
                                 @endforeach
                             </td>
-                            <td>S/ {{$suma }}</td>
+                            {{--  <td>S/ {{$suma }}</td>  --}}
 
                             <td>
                                 <a href="/orders/{{ $order->id }}/edit" class="btn btn-info">
@@ -115,13 +115,13 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estás seguro?',
+                text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si, Borrar!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
 

@@ -8,16 +8,16 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
         </div>
 
         <div class="card-header py-3">
             <a href="{{ route('products.create') }}" class="btn btn-info">
-                <i class="fas fa-plus"></i> Add New
+                <i class="fas fa-plus"></i> Agregar
             </a>
 
             <a href="{{ route('export.products') }}" class="btn btn-primary">
-                <i class="fas fa-file-excel"></i> Export
+                <i class="fas fa-file-excel"></i> Exportar
              </a>
 
 
@@ -42,11 +42,11 @@
                     <tr>
                         <th>Id</th>
                         <th>Sku</th>
-                        <th>Name</th>
-                        <th>Categories</th>
-                        <th>Purchase Price per Uni</th>
-                        <th>Selling Price per Unit</th>
-                        <th>Utility</th>
+                        <th>Nombre</th>
+                        <th>Categorias</th>
+                        <th>Precio de compra por unidad</th>
+                        <th>Precio de venta por unidad</th>
+                        <th>Utilidad</th>
                         <th>Stock</th>
                         <th></th>
                     </tr>
@@ -104,13 +104,13 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estás seguro?',
+                text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si, Borrar!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
 

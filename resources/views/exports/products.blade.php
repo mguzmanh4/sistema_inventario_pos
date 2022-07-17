@@ -3,14 +3,14 @@
         <tr>
             <th>Id</th>
             <th>Sku</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Categories</th>
-            <th>Purchase Price per Uni</th>
-            <th>Selling Price per Unit</th>
-            <th>Utility</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Categorias</th>
+            <th>Precio de compra por unidad</th>
+            <th>Precio de venta por unidad</th>
+            <th>Utilidad</th>
             <th>Stock</th>
-            <th>Created At</th>
+            <th>Fecha de creación</th>
         </tr>
     </thead>
     <tbody>

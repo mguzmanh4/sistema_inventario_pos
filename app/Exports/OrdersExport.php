@@ -13,7 +13,7 @@ class OrdersExport implements FromView, ShouldAutoSize
     public function view(): View
     {
         return view('exports.orders', [
-            'orders' => Order::all()
+            'orders' => Order::with('products')->get()
         ]);
     }
 }

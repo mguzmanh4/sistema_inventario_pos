@@ -13,7 +13,7 @@
 
         <div class="card-header py-3">
             <a href="{{ route('roles.create') }}" class="btn btn-info">
-                <i class="fas fa-plus"></i> Add New
+                <i class="fas fa-plus"></i> Agregar
             </a>
         </div>
 
@@ -35,7 +35,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nombre</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -81,13 +81,13 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estás seguro?',
+                text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si, Borrar!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
 

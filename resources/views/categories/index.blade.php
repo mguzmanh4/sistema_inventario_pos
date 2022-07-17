@@ -8,12 +8,12 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Categorias</h6>
         </div>
 
         <div class="card-header py-3">
             <a href="{{ route('categories.create') }}" class="btn btn-info">
-                <i class="fas fa-plus"></i> Add New
+                <i class="fas fa-plus"></i> Agregar
             </a>
         </div>
 
@@ -35,8 +35,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -86,13 +86,13 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estás seguro?',
+                text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si, Borrar!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
 

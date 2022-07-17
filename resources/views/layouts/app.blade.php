@@ -119,7 +119,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3"></div>
             </a>
 
             <!-- Divider -->
@@ -150,8 +150,8 @@
                 </a>
                 <div id="collapseRoles" class="{{ Route::is('roles.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('roles.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.index') }}">List</a>
-                        <a class="{{ Route::is('roles.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.create') }}">Create</a>
+                        <a class="{{ Route::is('roles.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.index') }}">Listar</a>
+                        <a class="{{ Route::is('roles.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('roles.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -160,12 +160,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                     aria-expanded="true" aria-controls="collapseUsers">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Users</span>
+                    <span>Usuarios</span>
                 </a>
                 <div id="collapseUsers" class="{{ Route::is('users.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('users.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.index') }}">List</a>
-                        <a class="{{ Route::is('users.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.create') }}">Create</a>
+                        <a class="{{ Route::is('users.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.index') }}">Listar</a>
+                        <a class="{{ Route::is('users.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('users.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -175,12 +175,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
                     aria-expanded="true" aria-controls="collapseCategories">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Categories</span>
+                    <span>Categorias</span>
                 </a>
                 <div id="collapseCategories" class="{{ Route::is('categories.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('categories.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.index') }}">List</a>
-                        <a class="{{ Route::is('categories.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.create') }}">Create</a>
+                        <a class="{{ Route::is('categories.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.index') }}">Listar</a>
+                        <a class="{{ Route::is('categories.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('categories.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -190,12 +190,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseshoppings"
                     aria-expanded="true" aria-controls="collapseshoppings">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>shoppings</span>
+                    <span>Compras</span>
                 </a>
                 <div id="collapseshoppings" class="{{ Route::is('shoppings.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('shoppings.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.index') }}">List</a>
-                        <a class="{{ Route::is('shoppings.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.create') }}">Create</a>
+                        <a class="{{ Route::is('shoppings.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.index') }}">Listar</a>
+                        <a class="{{ Route::is('shoppings.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('shoppings.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -205,12 +205,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
                     aria-expanded="true" aria-controls="collapseProducts">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Products</span>
+                    <span>Productos</span>
                 </a>
                 <div id="collapseProducts" class="{{ Route::is('products.*')   ? 'collapse show' : 'collapse' }}  " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('products.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.index') }}">List</a>
-                        <a class="{{ Route::is('products.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.create') }}">Create</a>
+                        <a class="{{ Route::is('products.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.index') }}">Listar</a>
+                        <a class="{{ Route::is('products.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('products.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -222,13 +222,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                     aria-expanded="true" aria-controls="collapseOrders">
                     <i class="fas fa-fw fa-cart-plus"></i>
-                    <span>Orders</span>
+                    <span>Ordenes</span>
                 </a>
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="{{ Route::is('orders.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.index') }}">List</a>
-                        <a class="{{ Route::is('orders.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.create') }}">Create</a>
+                        <a class="{{ Route::is('orders.index')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.index') }}">Listar</a>
+                        <a class="{{ Route::is('orders.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('orders.create') }}">Crear</a>
                     </div>
                 </div>
             </li>
@@ -266,7 +266,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }} - {{ Auth::user()->roles[0]->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('img/undraw_profile.svg') }}">
                             </a>
@@ -275,17 +275,17 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('users.update',[Auth::user()->id]) }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    Perfil
                                 </a>
                                 <a class="dropdown-item" href="{{ route('companies.create') }}">
                                     <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Company Info
+                                    Informacion de la empresa
                                 </a>
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Cerrar sesión
                                 </a>
                             </div>
                         </li>
@@ -313,7 +313,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2022</span>
+                        <span>Copyright &copy; 2022</span>
                     </div>
                 </div>
             </footer>
@@ -337,20 +337,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Listo para irse?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    {{--  <a class="btn btn-primary" href="login.html">Logout</a>  --}}
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
 
                     <a class="btn btn-primary" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        {{ __('Cerrar sesión') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -369,19 +368,29 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ __('Iniciar Sesión') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Nombre se usuario') }}</label>
 
-                                <div class="col-md-6">
+                                {{--  <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>  --}}
+                                <div class="col-md-6">
+                                    {{--  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>  --}}
+                                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -390,7 +399,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -409,7 +418,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Recuerdame') }}
                                         </label>
                                     </div>
                                 </div>
@@ -418,13 +427,13 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('Iniciar Sesión') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{--  <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
-                                        </a>
+                                        </a>  --}}
                                     @endif
                                 </div>
                             </div>
@@ -454,7 +463,11 @@
     <!-- Validate -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
+
     @yield('scripts')
+    <!-- Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
 </body>
 
 </html>

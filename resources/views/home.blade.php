@@ -35,7 +35,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Users</div>
+                                        Usuarios</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $users }}</div>
                                 </div>
                                 <div class="col-auto">
@@ -74,8 +74,27 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Orders</div>
+                                        Ordenes</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $orders }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="{{ route('orders.index') }}">
+                                        <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Compras</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $shoppings }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <a href="{{ route('orders.index') }}">
@@ -93,7 +112,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Products</div>
+                                        Productos</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $products }}</div>
                                 </div>
                                 <div class="col-auto">
@@ -112,7 +131,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Categories</div>
+                                        Categorias</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $categories }}</div>
                                 </div>
                                 <div class="col-auto">

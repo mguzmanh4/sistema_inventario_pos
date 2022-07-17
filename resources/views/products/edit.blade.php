@@ -9,7 +9,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit Product</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Editar Producto</h6>
         </div>
         <div class="card-body">
 
@@ -23,12 +23,12 @@
                         <input type="text"  readonly class="form-control" id="sku" name="sku" value="{{ $product->sku}}" required>
                     </div>
                     <div class="col">
-                        <label for="exampleFormControlInput1">Name</label>
+                        <label for="exampleFormControlInput1">Nombre</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Category</label>
+                    <label for="exampleFormControlInput1">Categoria</label>
                     <select class="form-control" name="categories[]" id="categories" multiple>
                         @foreach($categories as $id => $category)
                             <option value="{{ $id }}" {{ (in_array($id, old('categories', [])) || $product->categories->contains($id)) ? 'selected' : '' }}>{{ $category }}</option>
@@ -37,24 +37,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Description</label>
+                    <label for="exampleFormControlTextarea1">Descripcion</label>
                     <textarea class="form-control" id="description" name="description" id="exampleFormControlTextarea1" required
                         rows="3">{{ $product->description }}</textarea>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Purchase Price per Uni</label>
+                        <label for="exampleFormControlTextarea1">Precio de compra por unidad</label>
                         <input type="text" class="form-control" id="purchase_price" name="purchase_price" value="{{ $product->purchase_price }}" required>
                     </div>
                     <div class="col">
-                        <label for="exampleFormControlInput1">Selling Price per Unit</label>
+                        <label for="exampleFormControlInput1">Precio de venta por unidad</label>
                         <input type="text" class="form-control" id="selling_price" name="selling_price" value="{{ $product->selling_price }}" required>
                     </div>
                 </div>
-
+                <br>
                 <div class="row">
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Utility</label>
+                        <label for="exampleFormControlTextarea1">Utilidad</label>
                         <input type="text" class="form-control" readonly id="utility" name="utility" value="{{ $product->utility }}" required>
                     </div>
                     <div class="col">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
             </form>
         </div>
     </div>
@@ -80,7 +80,22 @@
     </script>
     <script>
         $(document).ready(function() {
-            $("#form").validate({});
+            $("#form").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 30
+                    },
+                    description: {
+                        required: true,
+                        maxlength: 50
+                    }
+                }
+            });
+
+            $('#purchase_price').mask('00000');
+            $('#selling_price').mask('00000');
+            $('#stock').mask('000');
         });
     </script>
 

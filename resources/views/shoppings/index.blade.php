@@ -8,16 +8,16 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Shoppings</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Compras</h6>
         </div>
 
         <div class="card-header py-3">
             <a href="{{ route('shoppings.create') }}" class="btn btn-info">
-                <i class="fas fa-plus"></i> Add New
+                <i class="fas fa-plus"></i> Agregar
             </a>
 
             <a href="{{ route('export.shoppings') }}" class="btn btn-primary">
-                <i class="fas fa-file-excel"></i> Export
+                <i class="fas fa-file-excel"></i> Exportar
              </a>
 
 
@@ -41,12 +41,12 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Product</th>
+                        <th>Producto</th>
                         <th>Sku</th>
                         <th>Stock</th>
-                        <th>Purchased Amount</th>
-                        <th>Vendor</th>
-                        <th>Cost</th>
+                        <th>Cantidad Comprada</th>
+                        <th>Vendedor</th>
+                        <th>Costo</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -100,13 +100,13 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Estás seguro?',
+                text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si, Borrar!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
 

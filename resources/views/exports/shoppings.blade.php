@@ -2,13 +2,13 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Product</th>
+            <th>Producto</th>
             <th>Sku</th>
             <th>Stock</th>
-            <th>Purchased Amount</th>
-            <th>Vendor</th>
-            <th>Cost</th>
-            <th>Created At</th>
+            <th>Cantidad Comprada</th>
+            <th>Vendedor</th>
+            <th>Costo</th>
+            <th>Fecha de creación</th>
         </tr>
     </thead>
     <tbody>

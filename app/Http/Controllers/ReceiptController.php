@@ -13,12 +13,6 @@ class ReceiptController extends Controller
 {
     public function donwloadPdf($order_id)
     {
-
-
-
-
-
-
         $order = Order::with(['products', 'user'])
             ->where('id', $order_id)
             ->first();
@@ -43,7 +37,7 @@ class ReceiptController extends Controller
 
         $pdf = PDF::loadView('receipt/index', $data);
 
-        $fileName = "Receipt-"."".$order->user->name ."-". Carbon::now()->format('m-d-Y').".pdf";
+        $fileName = "Recibo-"."".$order->user->name ."-". Carbon::now()->format('m-d-Y').".pdf";
 
         return $pdf->download($fileName);
 

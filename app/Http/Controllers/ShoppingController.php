@@ -117,7 +117,7 @@ class ShoppingController extends Controller
 
     public function export()
     {
-        return Excel::download(new ShoppingsExport, 'shoppings.xlsx');
+        return Excel::download(new ShoppingsExport, 'compras.xlsx');
     }
 
 }

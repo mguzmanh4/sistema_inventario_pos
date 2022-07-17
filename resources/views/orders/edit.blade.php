@@ -9,7 +9,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit Order</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Editar Orden</h6>
         </div>
         <div class="card-body">
 
@@ -17,22 +17,41 @@
                 @method('PUT')
                 @csrf
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">User</label>
+                    <label for="exampleFormControlInput1">Usuario</label>
                     <input type="text" class="form-control" readonly id="name" name="name" value="{{ $order->user->name }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Client Name</label>
+                    <label for="exampleFormControlInput1">Nombre de Cliente</label>
                     <input type="text" class="form-control" readonly id="client_name" name="client_name" value="{{ $order->client_name }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Products</label>
+                    {{--  <label for="exampleFormControlInput1">Products</label>
                     <select class="form-control" name="products[]" id="products" multiple>
                         @foreach($products as  $product)
                             <option value="{{ $product->id }}" {{ (in_array($product->id, old('products', [])) || $order->products->contains($product->id)) ? 'selected' : '' }}>{{ $product->name }} - {{ $product->purchase_price }}</option>
                         @endforeach
-                    </select>
+                    </select>  --}}
+                    <label class="required" for="products"> <strong>Productos</strong></label>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Check</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        @foreach($products as $product)
+                            <tr>
+                                <td><input {{ $product->value ? 'checked' : null }} data-id="{{ $product->id }}" type="checkbox" class="product-enable"></td>
+                                <td>{{ $product->name }}</td>
+                                <td><input id="amount_val"  value="{{ $product->value ?? null }}" {{ $product->value ? null : 'disabled' }} data-id="{{ $product->id }}" name="products[{{ $product->id }}]" type="text" class="product-amount form-control" placeholder="Cantidad"></td>
+                            </tr>
+                        @endforeach
+                    </table>
+
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
             </form>
         </div>
     </div>
@@ -44,6 +63,29 @@
     <script>
         $("#products").selectize({
             hideSelected: true,
+
+        });
+
+        $(document).ready(function() {
+            $('.product-enable').on('click', function () {
+                let id = $(this).attr('data-id')
+                console.log(id)
+                let enabled = $(this).is(":checked")
+                $('.product-amount[data-id="' + id + '"]').attr('disabled', !enabled)
+                $('.product-amount[data-id="' + id + '"]').val(null)
+            })
+
+            $("#form").validate({
+                rules: {
+                    client_name: {
+                        required: true,
+                        maxlength: 50
+                    }
+                }
+            });
+
+            $('#amount_val').mask('000');
+
 
         });
     </script>

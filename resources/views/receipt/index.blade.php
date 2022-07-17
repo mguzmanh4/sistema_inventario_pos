@@ -55,9 +55,9 @@
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                                                            Hello, {{ $client_name }}.
-                                                            <br> Thank you for shopping from our store and for your
-                                                            order.
+                                                            Hola, {{ $client_name }}.
+                                                            <br> Gracias por comprar en nuestra tienda.
+                                                            y realizar su pedido.
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -74,7 +74,7 @@
                                                     <tr>
                                                         <td
                                                             style="font-size: 21px; color: #ff0000; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
-                                                            Receipt
+                                                            Recibo
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -87,7 +87,7 @@
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
-                                                            <small>ORDER</small> #{{ $order_id }} <br />
+                                                            <small>Número de orden</small> #{{ $order_id }} <br />
                                                             <small>{{ $date }}</small>
                                                         </td>
                                                     </tr>
@@ -128,7 +128,7 @@
                                             <tr>
                                                 <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;"
                                                     width="52%" align="left">
-                                                    Item
+                                                    Producto
                                                 </th>
                                                 <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                     align="left">
@@ -136,11 +136,11 @@
                                                 </th>
                                                 <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                     align="center">
-                                                    Quantity
+                                                    Cantidad
                                                 </th>
                                                 <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                     align="right">
-                                                    Price
+                                                    Precio
                                                 </th>
                                             </tr>
                                             <tr>
@@ -163,12 +163,12 @@
                                                         <small>{{ $product->sku }}</small>
                                                     </td>
                                                     <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"
-                                                        align="center">1</td>
+                                                        align="center">{{ $product->pivot->amount }}</td>
                                                     <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                         align="right">S/ {{ $product->purchase_price }}</td>
                                                 </tr>
                                                 @php
-                                                    $suma += $product->purchase_price;
+                                                $suma += ($product->purchase_price * $product->pivot->amount );
                                                 @endphp
                                             @endforeach
                                         </tbody>
@@ -278,7 +278,7 @@
                                                             <tr>
                                                                 <td
                                                                     style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                                                    <strong>Company Information</strong>
+                                                                    <strong>Información de la Empresa</strong>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -287,11 +287,11 @@
                                                             <tr>
                                                                 <td
                                                                     style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                                                    <strong>Company Name</strong>  {{ $company ? $company->name : '' }}<br>
+                                                                    <strong>Nombre de la empresa</strong>  {{ $company ? $company->name : '' }}<br>
                                                                     <strong>Ruc</strong>  {{ $company ? $company->ruc : '' }}<br>
-                                                                    <strong>Address</strong>  {{ $company ? $company->address : '' }}<br>
-                                                                    <strong>Phone</strong>  {{ $company ? $company->phone : '' }}<br>
-                                                                    <strong>CellPhone</strong>  {{ $company ? $company->cellphone : '' }}<br>
+                                                                    <strong>Dirección</strong>  {{ $company ? $company->address : '' }}<br>
+                                                                    <strong>Teléfono</strong>  {{ $company ? $company->phone : '' }}<br>
+                                                                    <strong>Celular</strong>  {{ $company ? $company->cellphone : '' }}<br>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
