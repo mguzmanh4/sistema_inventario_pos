@@ -66,7 +66,12 @@ Route::middleware(['auth',])->group(function () {
 
     Route::post('searchUser',  [App\Http\Controllers\ApiReniecController::class, 'searchUser'])->name('reniec.searchUser');
 
+    Route::get('report-selling-month-view',  [App\Http\Controllers\ReportController::class, 'selling_per_month_view'])->name('reports.selling_per_month_view');
+    Route::get('report-selling-month/{year}',  [App\Http\Controllers\ReportController::class, 'selling_per_month'])->name('reports.selling_per_month');
 
+
+    Route::get('report-most-sell-view',  [App\Http\Controllers\ReportController::class, 'most_sell_view'])->name('reports.most_sell_view');
+    Route::get('report-most-sell/{dateFrom}/{dateTo}',  [App\Http\Controllers\ReportController::class, 'most_sell'])->name('reports.most_sell');
 
 
 });

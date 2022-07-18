@@ -42,7 +42,7 @@
                         <th>Usuario</th>
                         <th>Nombre del Cliente</th>
                         <th>Productos</th>
-                        {{--  <th>Total</th>  --}}
+                        <th>Total</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -60,11 +60,12 @@
                                 @foreach ($order->products as $key => $item)
                                     <span class="badge badge-primary">{{ $item->name }}</span>
                                     @php
-                                        $suma += $item->purchase_price;
+                                        $suma += ($item->purchase_price * $item->pivot->amount );
+
                                     @endphp
                                 @endforeach
                             </td>
-                            {{--  <td>S/ {{$suma }}</td>  --}}
+                            <td>S/ {{$suma }}</td>
 
                             <td>
                                 <a href="/orders/{{ $order->id }}/edit" class="btn btn-info">

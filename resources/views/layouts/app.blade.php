@@ -233,6 +233,23 @@
                 </div>
             </li>
 
+            <!-- Nav Item - reports Collapse Menu -->
+            <li class="{{ Route::is('reports.*')   ? 'nav-item active' : 'nav-item' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsereport_per_month"
+                    aria-expanded="true" aria-controls="collapsereport_per_month">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+                <div id="collapsereport_per_month" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="{{ Route::is('reports.selling_per_month_view')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('reports.selling_per_month_view') }}">Ventas por mes</a>
+                        <a class="{{ Route::is('reports.most_sell_view')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('reports.most_sell_view') }}">Más vendiddos</a>
+                        {{--  <a class="{{ Route::is('reports.create')   ? 'collapse-item active' : 'collapse-item' }}" href="{{ route('reports.create') }}">Crear</a>  --}}
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
